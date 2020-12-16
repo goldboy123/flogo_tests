@@ -1,0 +1,28 @@
+{
+  "name": "del",
+  "type": "flogo:function",
+  "version": "0.10.0",
+  "title": "add",
+  "description": "add Function",
+  "homepage": "https://github.com/goldboy123/contrib/tree/main/function/del",
+  "functions": [
+    {
+      "name": "Add",
+      "description": "add",
+      "example": "a - b = c",
+      "args": [
+        {
+          "name": "num1",
+          "type": "int"
+        },
+        {
+          "name": "num2",
+          "type": "int"
+        }
+      ],
+      "return": {
+        "type": "int"
+      }
+    }
+  ]
+}
