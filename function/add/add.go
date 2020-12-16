@@ -1,10 +1,10 @@
 package add
 
 import (
-	"flogo/core/data/coerce"
-	"flogo/core/data/expression/function"
 	"fmt"
 	"github.com/project-flogo/core/data"
+	"github.com/project-flogo/core/data/coerce"
+	"github.com/project-flogo/core/data/expression/function"
 )
 
 

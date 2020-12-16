@@ -4,7 +4,7 @@
   "version": "0.10.0",
   "title": "add",
   "description": "add Function",
-  "homepage": "https://github.com/goldboy123/flogo_tests/tree/main/function/add",
+  "homepage": "https://github.com/goldboy123/contrib/tree/main/function/add",
   "functions": [
     {
       "name": "Add",
