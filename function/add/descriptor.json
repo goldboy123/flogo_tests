@@ -1,0 +1,28 @@
+{
+  "name": "add",
+  "type": "flogo:function",
+  "version": "0.10.0",
+  "title": "add",
+  "description": "add Function",
+  "homepage": "https://github.com/prject-flogo/contrib/tree/master/function/json",
+  "functions": [
+    {
+      "name": "Add",
+      "description": "add",
+      "example": "a + b = c",
+      "args": [
+        {
+          "name": "num1",
+          "type": "int"
+        },
+        {
+          "name": "num2",
+          "type": "int"
+        }
+      ],
+      "return": {
+        "type": "int"
+      }
+    }
+  ]
+}
