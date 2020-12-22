@@ -1,9 +1,13 @@
 package kafka
 
 import (
+	"crypto/sha256"
+	"crypto/sha512"
 	"crypto/tls"
 	"crypto/x509"
 	"fmt"
+	"github.com/xdg/scram"
+	"hash"
 	"io/ioutil"
 	"os"
 	"strconv"
@@ -12,6 +16,35 @@ import (
 	"github.com/Shopify/sarama"
 	"github.com/project-flogo/core/support/log"
 )
+
+
+var SHA256 scram.HashGeneratorFcn = func() hash.Hash { return sha256.New() }
+var SHA512 scram.HashGeneratorFcn = func() hash.Hash { return sha512.New() }
+
+type XDGSCRAMClient struct {
+	*scram.Client
+	*scram.ClientConversation
+	scram.HashGeneratorFcn
+}
+
+func (x *XDGSCRAMClient) Begin(userName, password, authzID string) (err error) {
+	x.Client, err = x.HashGeneratorFcn.NewClient(userName, password, authzID)
+	if err != nil {
+		return err
+	}
+	x.ClientConversation = x.Client.NewConversation()
+	return nil
+}
+
+func (x *XDGSCRAMClient) Step(challenge string) (response string, err error) {
+	response, err = x.ClientConversation.Step(challenge)
+	return
+}
+
+func (x *XDGSCRAMClient) Done() bool {
+	return x.ClientConversation.Done()
+}
+
 
 type KafkaConnection struct {
 	kafkaConfig  *sarama.Config
@@ -26,6 +59,8 @@ func (c *KafkaConnection) Connection() sarama.Consumer {
 func (c *KafkaConnection) Stop() error {
 	return c.consumer.Close()
 }
+
+
 
 func getKafkaConnection(logger log.Logger, settings *Settings) (*KafkaConnection, error) {
 
@@ -80,10 +115,7 @@ func getKafkaConnection(logger log.Logger, settings *Settings) (*KafkaConnection
 		newConn.kafkaConfig.Net.SASL.Enable = true
 		newConn.kafkaConfig.Net.SASL.User = settings.User
 		newConn.kafkaConfig.Net.SASL.Password = settings.Password
-
-		newConn.kafkaConfig.Net.SASL.SCRAMClientGeneratorFunc = func() sarama.SCRAMClient {
-			return &XDGSCRAMClient{HashGeneratorFcn: SHA512}
-		}
+		newConn.kafkaConfig.Net.SASL.SCRAMClientGeneratorFunc = func() sarama.SCRAMClient { return &XDGSCRAMClient{HashGeneratorFcn: SHA512} }
 		newConn.kafkaConfig.Net.SASL.Mechanism = sarama.SASLTypeSCRAMSHA512
 		logger.Debugf("Kafka SASL params initialized; user [%v]", settings.User)
 	}
