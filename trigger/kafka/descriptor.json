@@ -1,5 +1,5 @@
 {
-  "name": "flogo-kafka",
+  "name": "flogo-kafka2",
   "type": "flogo:trigger",
   "version": "0.10.0",
   "title": "Receive Kafka Messages",
