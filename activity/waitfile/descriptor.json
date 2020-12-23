@@ -1,0 +1,21 @@
+{
+  "name": "waitfile",
+  "type": "flogo:activity",
+  "version": "0.10.0",
+  "title": "waitfile",
+  "description": "file exists",
+  "input": [
+    {
+      "name": "url",
+      "type": "string",
+      "description" : "file url"
+    }
+  ],
+  "output": [
+    {
+      "name": "status",
+      "type": "boolean",
+      "description" : "if exists"
+    }
+  ]
+}
