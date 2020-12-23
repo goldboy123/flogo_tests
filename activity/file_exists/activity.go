@@ -1,36 +1,56 @@
 package file_exists
 
 import (
-	"github.com/project-flogo/core/activity"
+	"time"
+
+	"github.com/TIBCOSoftware/flogo-lib/core/activity"
+	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
 
+// activityLog is the default logger for the Log Activity
+var activityLog = logger.GetLogger("activity-flogo-sleep")
 
-// Activity is an Activity that is used to log a message to the console
-// inputs : url
-// outputs: status
-type MyActivity struct {
+const (
+	ivInterval     = "interval"
+	ivIntervalType = "intervalType"
+)
+
+// SleepActivity is an Activity that can stop flow execution for given time duration.
+// inputs : {interval, intervalType}
+// outputs: none
+type SleepActivity struct {
 	metadata *activity.Metadata
 }
 
-
+// NewActivity creates a new AppActivity
 func NewActivity(metadata *activity.Metadata) activity.Activity {
-	return &MyActivity{metadata: metadata}
+	return &SleepActivity{metadata: metadata}
 }
 
 // Metadata returns the activity's metadata
-func (a *MyActivity) Metadata() *activity.Metadata {
+func (a *SleepActivity) Metadata() *activity.Metadata {
 	return a.metadata
 }
 
-// Eval implements api.Activity.Eval
-func (a *MyActivity) Eval(ctx activity.Context) (done bool, err error) {
+func (a *SleepActivity) Eval(context activity.Context) (done bool, err error) {
 
-	//url := ctx.GetInput("url").(string)
-	//ctx.Logger().Debugf(url)
-	////output := &Output{Status:true}
-	//err = ctx.SetOutput("status",true)
-	//if err != nil{
-	//	return false , err
-	//}
+	//mv := context.GetInput(ivMessage)
+	activityLog.Info("Executing Sleep activity")
+	interval, _ := context.GetInput(ivInterval).(int)
+
+	intervalType, _ := context.GetInput(ivIntervalType).(string)
+
+	switch intervalType {
+	case "Millisecond":
+		time.Sleep(time.Duration(interval) * time.Millisecond)
+	case "Second":
+		time.Sleep(time.Duration(interval) * time.Second)
+	case "Minute":
+		time.Sleep(time.Duration(interval) * time.Minute)
+	default:
+		return false, activity.NewError("Unsupported Interval Type. Supported Types- [Millisecond, Second, Minute]", "", nil)
+	}
+
+	activityLog.Info("Sleep activity completed")
 	return true, nil
 }
