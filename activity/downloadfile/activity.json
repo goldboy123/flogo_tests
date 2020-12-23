@@ -5,7 +5,7 @@
     "version": "0.1.1",
     "title": "Download file",
     "description": "Download a file.",
-    "author": "retgits",
+    "author": "vspiders",
     "homepage": "github.com/goldboy123/flogo_tests/activity/downloadfile",
     "inputs": [
         {

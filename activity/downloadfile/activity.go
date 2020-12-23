@@ -85,6 +85,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 			}
 			break
 		}
+		time.Sleep(10 * time.Second)
 	}
 
 
