@@ -67,15 +67,15 @@ func (a *Activity) Metadata() *activity.Metadata {
 
 // Eval implements api.Activity.Eval
 func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
-
 	input := &Input{}
 	ctx.GetInputObject(input)
 
 	url := input.Url
-	ctx.Logger().Info(url)
-
-	output := &Output{Status:true}
-	err = ctx.SetOutputObject(output)
-
+	ctx.Logger().Debugf(url)
+	//output := &Output{Status:true}
+	err = ctx.SetOutput("status",true)
+	if err != nil{
+		return false , err
+	}
 	return true, nil
 }
