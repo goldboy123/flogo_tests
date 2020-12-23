@@ -23,12 +23,12 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 // Eval implements api.Activity.Eval
 func (a *MyActivity) Eval(ctx activity.Context) (done bool, err error) {
 
-	url := ctx.GetInput("url").(string)
-	ctx.Logger().Debugf(url)
-	//output := &Output{Status:true}
-	err = ctx.SetOutput("status",true)
-	if err != nil{
-		return false , err
-	}
+	//url := ctx.GetInput("url").(string)
+	//ctx.Logger().Debugf(url)
+	////output := &Output{Status:true}
+	//err = ctx.SetOutput("status",true)
+	//if err != nil{
+	//	return false , err
+	//}
 	return true, nil
 }
