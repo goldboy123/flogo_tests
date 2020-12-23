@@ -1,0 +1,38 @@
+{
+  "name": "agent2ip",
+  "type": "flogo:function",
+  "version": "0.10.0",
+  "title": "add",
+  "description": "add Function",
+  "homepage": "https://github.com/goldboy123/contrib/tree/main/function/add",
+  "functions": [
+    {
+      "name": "agent2ip",
+      "description": "agent to ip",
+      "example": "agent2ip(132456)",
+      "args": [
+        {
+          "name": "agent",
+          "type": "string"
+        }
+      ],
+      "return": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "ip2agent",
+      "description": "ip to agent",
+      "example": "ip2agent",
+      "args": [
+        {
+          "name": "ip",
+          "type": "string"
+        }
+      ],
+      "return": {
+        "type": "string"
+      }
+    }
+  ]
+}
