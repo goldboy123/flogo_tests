@@ -6,29 +6,30 @@ import (
 
 // Activity is an Activity that is used to log a message to the console
 // inputs : url
-// outputs: status
-type MyActivity struct {
-	metadata *activity.Metadata
+// outputs: stfatus
+func init() {
+_ = activity.Register(&Activity{})
 }
 
-func NewActivity(metadata *activity.Metadata) activity.Activity{
-	return &MyActivity{metadata:metadata}
+var activityMd = activity.ToMetadata()
+
+// Activity is an Activity that is used to log a message to the console
+// inputs : none
+// outputs: none
+type Activity struct {
 }
 
 // Metadata returns the activity's metadata
-func (a *MyActivity) Metadata() *activity.Metadata {
-	return a.metadata
+func (a *Activity) Metadata() *activity.Metadata {
+	return activityMd
 }
 
 // Eval implements api.Activity.Eval
-func (a *MyActivity) Eval(ctx activity.Context) (done bool, err error) {
+func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 
-	//url := ctx.GetInput("url").(string)
-	//ctx.Logger().Debugf(url)
-	////output := &Output{Status:true}
-	//err = ctx.SetOutput("status",true)
-	//if err != nil{
-	//	return false , err
-	//}
+	if ctx.Logger().DebugEnabled() {
+		ctx.Logger().Debug("Performing No-Op Activity")
+	}
+
 	return true, nil
 }
