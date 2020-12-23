@@ -1,0 +1,44 @@
+{
+    "name": "downloadfile",
+    "type": "flogo:activity",
+    "ref": "github.com/goldboy123/flogo_tests/activity/downloadfile",
+    "version": "0.1.1",
+    "title": "Download file",
+    "description": "Download a file.",
+    "author": "retgits",
+    "homepage": "github.com/goldboy123/flogo_tests/activity/downloadfile",
+    "inputs": [
+        {
+            "name": "url",
+            "type": "string",
+            "required": true
+        },
+        {
+            "name": "writeToDisk",
+            "type": "bool",
+            "required": true
+        },
+        {
+            "name": "filename",
+            "type": "string"
+        },
+        {
+            "name": "append",
+            "type": "bool"
+        },
+        {
+            "name": "create",
+            "type": "bool"
+        },
+        {
+            "name": "ivtimes",
+            "type": "int"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "result",
+            "type": "string"
+        }
+    ]
+}
