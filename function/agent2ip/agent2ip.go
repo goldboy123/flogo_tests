@@ -16,7 +16,7 @@ type fnAgent2Ip struct {
 }
 
 func (f fnAgent2Ip) Name() string {
-	return "agent_to_ip"
+	return "agent2ip"
 }
 
 func (f fnAgent2Ip) Sig() (paramTypes []data.Type, isVariadic bool) {
