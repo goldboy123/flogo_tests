@@ -4,10 +4,6 @@ import (
 	"github.com/project-flogo/core/activity"
 )
 
-func init() {
-	_ = activity.Register(&MyActivity{})
-}
-
 
 // Activity is an Activity that is used to log a message to the console
 // inputs : url
