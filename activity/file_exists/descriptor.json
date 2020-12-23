@@ -1,0 +1,21 @@
+{
+  "name": "file_exists",
+  "type": "flogo:activity",
+  "version": "0.10.0",
+  "title": "file_exists",
+  "description": "file exists",
+  "input": [
+    {
+      "name": "url",
+      "type": "params",
+      "description" : "file url"
+    }
+  ],
+  "output": [
+    {
+      "name": "status",
+      "type": "boolean",
+      "description" : "if exists"
+    }
+  ]
+}
