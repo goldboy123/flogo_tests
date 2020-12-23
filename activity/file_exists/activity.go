@@ -58,11 +58,16 @@ var activityMd = activity.ToMetadata(&Input{})
 // inputs : none
 // outputs: none
 type Activity struct {
+	metadata *activity.Metadata
+}
+
+func NewActivity(metadata *activity.Metadata) activity.Activity{
+	return &Activity{metadata:metadata}
 }
 
 // Metadata returns the activity's metadata
 func (a *Activity) Metadata() *activity.Metadata {
-	return activityMd
+	return a.metadata
 }
 
 // Eval implements api.Activity.Eval
