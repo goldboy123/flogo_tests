@@ -4,14 +4,14 @@
   "version": "0.10.0",
   "title": "file_exists",
   "description": "file exists",
-  "inputs": [
+  "input": [
     {
       "name": "url",
       "type": "string",
       "description" : "file url"
     }
   ],
-  "outputs": [
+  "output": [
     {
       "name": "status",
       "type": "boolean",
