@@ -11,8 +11,7 @@ import (
 var activityLog = logger.GetLogger("activity-flogo-sleep")
 
 const (
-	ivInterval     = "interval"
-	ivIntervalType = "intervalType"
+	url     = "url"
 )
 
 // SleepActivity is an Activity that can stop flow execution for given time duration.
@@ -35,22 +34,8 @@ func (a *SleepActivity) Metadata() *activity.Metadata {
 func (a *SleepActivity) Eval(context activity.Context) (done bool, err error) {
 
 	//mv := context.GetInput(ivMessage)
-	activityLog.Info("Executing Sleep activity")
-	interval, _ := context.GetInput(ivInterval).(int)
-
-	intervalType, _ := context.GetInput(ivIntervalType).(string)
-
-	switch intervalType {
-	case "Millisecond":
-		time.Sleep(time.Duration(interval) * time.Millisecond)
-	case "Second":
-		time.Sleep(time.Duration(interval) * time.Second)
-	case "Minute":
-		time.Sleep(time.Duration(interval) * time.Minute)
-	default:
-		return false, activity.NewError("Unsupported Interval Type. Supported Types- [Millisecond, Second, Minute]", "", nil)
-	}
-
-	activityLog.Info("Sleep activity completed")
+	url := context.GetInput(url)
+	logger.Info(url)
+	context.SetOutput("status",true)
 	return true, nil
 }

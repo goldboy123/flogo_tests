@@ -4,19 +4,18 @@
   "version": "0.10.0",
   "title": "file_exists",
   "description": "file exists",
-  "input":[
+  "input": [
     {
-      "name": "interval",
-      "type": "integer"
-    },
-    {
-      "name": "intervalType",
+      "name": "url",
       "type": "string",
-      "allowed": ["Millisecond", "Second", "Minute"],
-      "value": "Millisecond"
+      "description" : "file url"
     }
   ],
   "output": [
-
+    {
+      "name": "status",
+      "type": "boolean",
+      "description" : "if exists"
+    }
   ]
 }
