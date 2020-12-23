@@ -1,8 +1,6 @@
 package file_exists
 
 import (
-	"time"
-
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
@@ -34,8 +32,8 @@ func (a *SleepActivity) Metadata() *activity.Metadata {
 func (a *SleepActivity) Eval(context activity.Context) (done bool, err error) {
 
 	//mv := context.GetInput(ivMessage)
-	url := context.GetInput(url)
-	logger.Info(url)
+	url := context.GetInput(url).(string)
+	activityLog.Infof(url)
 	context.SetOutput("status",true)
 	return true, nil
 }
