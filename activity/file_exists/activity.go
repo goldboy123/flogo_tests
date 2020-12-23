@@ -6,7 +6,7 @@ import (
 )
 
 // activityLog is the default logger for the Log Activity
-var activityLog = logger.GetLogger("activity-flogo-sleep")
+var activityLog = logger.GetLogger("activity-flogo-fileexists")
 
 const (
 	url     = "url"
@@ -15,21 +15,21 @@ const (
 // SleepActivity is an Activity that can stop flow execution for given time duration.
 // inputs : {interval, intervalType}
 // outputs: none
-type SleepActivity struct {
+type MyActivity struct {
 	metadata *activity.Metadata
 }
 
 // NewActivity creates a new AppActivity
 func NewActivity(metadata *activity.Metadata) activity.Activity {
-	return &SleepActivity{metadata: metadata}
+	return &MyActivity{metadata: metadata}
 }
 
 // Metadata returns the activity's metadata
-func (a *SleepActivity) Metadata() *activity.Metadata {
+func (a *MyActivity) Metadata() *activity.Metadata {
 	return a.metadata
 }
 
-func (a *SleepActivity) Eval(context activity.Context) (done bool, err error) {
+func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	//mv := context.GetInput(ivMessage)
 	url := context.GetInput(url).(string)
