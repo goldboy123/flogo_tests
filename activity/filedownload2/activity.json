@@ -1,0 +1,27 @@
+{
+    "name": "filedownload2",
+    "type": "flogo:activity",
+    "ref": "github.com/goldboy123/flogo_tests/activity/filedownload2",
+    "version": "0.1.1",
+    "title": "File download Test",
+    "description": "Download a file.",
+    "author": "vspiders",
+    "homepage": "http://github.com/goldboy123/flogo_tests/",
+    "inputs": [
+        {
+            "name": "url",
+            "type": "string",
+            "required": true
+        },
+        {
+            "name": "ivtimes",
+            "type": "int"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "result",
+            "type": "string"
+        }
+    ]
+}
