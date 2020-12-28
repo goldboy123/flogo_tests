@@ -2,7 +2,7 @@
 	"name": "sqlquery-activity_test",
 	"type": "flogo:activity",
 	"version": "0.10.0",
-	"title": "SQL Database Activity",
+	"title": "Onion SQL Database Activity",
   	"description": "Flogo Activity for SQL",
   	"homepage": "https://github.com/goldboy123/flogo_tests/activity/sqlquery",
 	"settings": [
