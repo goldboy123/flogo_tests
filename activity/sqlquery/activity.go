@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
+	_ "github.com/go-sql-driver/mysql" //required if mysql driver is selected
+	_ "github.com/lib/pq"              //required if postgres driver is selected
 	"github.com/project-flogo/contrib/activity/sqlquery/util"
 	"github.com/project-flogo/core/activity"
 	"github.com/project-flogo/core/data/metadata"
